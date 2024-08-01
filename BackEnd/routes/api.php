@@ -9,6 +9,7 @@ use App\Http\Controllers\VariantController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImagesVariantController;
+use App\Http\Controllers\CommentController;
 
 //User API CRUDS
 Route::get('/users', [UserController::class, 'index']);
@@ -58,3 +59,7 @@ Route::post('/images-variants', [ImagesVariantController::class, 'store']);
 Route::get('/images-variants/{id}', [ImagesVariantController::class, 'show']);
 Route::put('/images-variants/{id}', [ImagesVariantController::class, 'update']);
 Route::delete('/images-variants/{id}', [ImagesVariantController::class, 'destroy']);
+
+//Comment API CS
+Route::get('/comments', [CommentController::class, 'index']);
+Route::post('/comments', [CommentController::class, 'store']);
