@@ -13,6 +13,13 @@ const Header = () => {
     navigate(`/products?search=${searchQuery}`);
   };
 
+  const handleMyOrders = () => {
+    if (user) {
+      navigate(`/myorder/${user.id}`);
+    } else {
+      alert("Please log in to view your orders.");
+    }
+  };
 
   return (
     <header id="main-header">
@@ -34,9 +41,9 @@ const Header = () => {
               <div className="flex items-center space-x-2">
                 {user ? (
                   <>
-                  <Link to ="/profile/account-dashboard" className='text-sm'>
+                    <Link to ="/profile/account-dashboard" className='text-sm'>
                       Hello, {user.name}
-                  </Link>
+                    </Link>
                     <button onClick={logout} className="text-sm">Sign Out</button>
                   </>
                 ) : (
@@ -110,6 +117,27 @@ const Header = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </form>
+            </div>
+
+            <div className="myOrderIcon">
+              <button onClick={handleMyOrders} className="relative">
+                <svg
+                  alt="My Orders"
+                  aria-label="my-orders"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-package"
+                >
+                  <path d="M16.5 9.4l-9-5.2M7.5 3.3v7.9M16.5 12.7V4.8m4.5 8.1v7.9c0 .5-.4 1-1 1H4a1 1 0 01-1-1V12.9M16.5 3.3l5.2 3M4.8 6.3l-5.2 3M9 10.7L9 21m6-10.3l.8 10.6" />
+                </svg>
+              </button>
             </div>
 
             <div className="cartTop cartOuter relative">
